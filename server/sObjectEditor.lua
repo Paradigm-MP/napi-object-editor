@@ -7,7 +7,7 @@ end
 
 function ObjectEditor:SaveObjects(args)
     if not args.data then return end
-    JSONUtils:SaveJSON(args.data, "object-editor/server/saved-files/" .. args.file .. ".json")
+    JsonUtils:SaveJSON(args.data, "object-editor/server/saved-files/" .. args.file .. ".json")
     Chat:Send({
         player = args.player,
         text = "<b>Saved " .. tostring(#args.data) .. " objects to object-editor/server/saved-files/" .. args.file .. ".json</b>",
@@ -17,7 +17,7 @@ end
 
 function ObjectEditor:LoadObjects(args)
     if not args.file then return end
-    local obj = JSONUtils:LoadJSON("object-editor/server/saved-files/" .. args.file .. ".json")
+    local obj = JsonUtils:LoadJSON("object-editor/server/saved-files/" .. args.file .. ".json")
     if not obj then return end
     Network:Send("object-editor/load_objects", args.player, {data = obj})
 end
