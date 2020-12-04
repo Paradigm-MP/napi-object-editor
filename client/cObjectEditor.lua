@@ -32,15 +32,18 @@ function ObjectEditor:__init()
     
     Events:Subscribe("LocalPlayerChat", function(args) self:LocalPlayerChat(args) end)
 
-    KeyPress:Subscribe(Control.Reload)
-    KeyPress:Subscribe(Control.GameMenuUp)
-    KeyPress:Subscribe(Control.GameMenuDown)
-    KeyPress:Subscribe(Control.GameMenuLeft)
-    KeyPress:Subscribe(Control.GameMenuRight)
-    KeyPress:Subscribe(Control.AimInAir) -- U
-    KeyPress:Subscribe(Control.OpenSatchelMenu) -- B
-    KeyPress:Subscribe(Control.PushToTalk) -- N
-    KeyPress:Subscribe(Control.OpenJournal) -- J
+    if RedM then
+        KeyPress:Subscribe(Control.Reload)
+        KeyPress:Subscribe(Control.GameMenuUp)
+        KeyPress:Subscribe(Control.GameMenuDown)
+        KeyPress:Subscribe(Control.GameMenuLeft)
+        KeyPress:Subscribe(Control.GameMenuRight)
+        KeyPress:Subscribe(Control.AimInAir) -- U
+        KeyPress:Subscribe(Control.OpenSatchelMenu) -- B
+        KeyPress:Subscribe(Control.PushToTalk) -- N
+        KeyPress:Subscribe(Control.OpenJournal) -- J
+    end
+    
     Events:Subscribe("KeyDown", function(args) self:KeyUp(args) end)
     
     Network:Subscribe("object-editor/load_objects", function(args) self:LoadObjects(args) end)
