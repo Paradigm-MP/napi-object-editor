@@ -290,7 +290,7 @@ end
 
 function ObjectEditor:RenderPlayerPosition()
     local pos = LocalPlayer:GetPosition()
-    local pos_2d = vector2(0, 0.5)
+    local pos_2d = vector2(0, 0.25)
     local color = Colors.White
     local text = string.format("X: %.2f\n Y: %.2f\n Z: %.2f", pos.x, pos.y, pos.z)
     Render:DrawText(pos_2d, text, color, 0.3, 0)
