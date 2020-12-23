@@ -281,10 +281,19 @@ function ObjectEditor:Render(args)
         self:RenderObjectData(self.selected_object)
     end
 
+    self:RenderPlayerPosition()
     
     local raycast = Physics:Raycast(Camera:GetPosition(), Camera:GetPosition() + Camera:GetRotation() * 100, nil, LocalPlayer:GetPed():GetEntity())
     local pos = raycast.position + raycast.normal * 0.2
     --Render:HighlightCoords(pos, HighlightCoordsColors.Green)
+end
+
+function ObjectEditor:RenderPlayerPosition()
+    local pos = LocalPlayer:GetPosition()
+    local pos_2d = vector2(0, 0.5)
+    local color = Colors.White
+    local text = string.format("X: %.2f\n Y: %.2f\n Z: %.2f", pos.x, pos.y, pos.z)
+    Render:DrawText(pos_2d, text, color, 0.3, 0)
 end
 
 function ObjectEditor:RenderObjectData(object)
